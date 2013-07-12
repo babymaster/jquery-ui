@@ -13,7 +13,20 @@
  *	jquery.ui.widget.js
  *	jquery.ui.position.js
  */
-(function( $ ) {
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"jqueryui/jquery.ui.core.js",
+			"jqueryui/jquery.ui.widget.js",
+			"jqueryui/jquery.ui.position.js"
+		], factory );
+	} else {
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
 
 var increments = 0;
 
@@ -399,4 +412,4 @@ $.widget( "ui.tooltip", {
 	}
 });
 
-}( jQuery ) );
+}));

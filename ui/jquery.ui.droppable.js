@@ -14,7 +14,21 @@
  *	jquery.ui.mouse.js
  *	jquery.ui.draggable.js
  */
-(function( $, undefined ) {
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"jqueryui/jquery.ui.core.js",
+			"jqueryui/jquery.ui.widget.js",
+			"jqueryui/jquery.ui.mouse.js",
+			"jqueryui/jquery.ui.draggable.js"
+		], factory );
+	} else {
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
 
 function isOverAxis( x, reference, size ) {
 	return ( x >= reference ) && ( x < ( reference + size ) );
@@ -386,4 +400,4 @@ $.ui.ddmanager = {
 	}
 };
 
-})( jQuery );
+}));

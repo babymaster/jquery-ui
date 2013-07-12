@@ -13,7 +13,20 @@
  *	jquery.ui.mouse.js
  *	jquery.ui.widget.js
  */
-(function( $, undefined ) {
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"jqueryui/jquery.ui.core.js",
+			"jqueryui/jquery.ui.mouse.js",
+			"jqueryui/jquery.ui.widget.js"
+		], factory );
+	} else {
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
 
 $.widget("ui.selectable", $.ui.mouse, {
 	version: "@VERSION",
@@ -274,4 +287,4 @@ $.widget("ui.selectable", $.ui.mouse, {
 
 });
 
-})(jQuery);
+}));
